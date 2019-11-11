@@ -10,6 +10,17 @@ body{
 .main_container{
     margin: 20vh auto;
     width: 800px;
+    text-align: center;
+}
+.game_container{
+    margin: 15vh auto;
+    width: 800px;
+    text-align: center;
+}
+
+.game_field{
+    margin: 20px auto;
+    width: 800px;
     min-height: 600px;
     text-align: center;
     background: url('bg.jpg') repeat-y 0 0;
@@ -26,4 +37,9 @@ body{
 
 .start_game_btn:hover{
     background-color: cadetblue;
+}
+
+.ship img{
+    position:relative;
+    margin: 540px auto 10px auto;
 }
