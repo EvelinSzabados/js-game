@@ -24,7 +24,7 @@ body{
     min-height: 600px;
     text-align: center;
     background: url('bg.jpg') repeat-y 0 0;
-
+    position: relative;
 }
 .start_game_btn{
     border: none;
@@ -33,13 +33,18 @@ body{
     color: white;
     font-size: 16px;
     padding: 20px;
+    margin-inside: 20px;
 }
 
 .start_game_btn:hover{
     background-color: cadetblue;
 }
 
-.ship img{
-    position:relative;
-    margin: 540px auto 10px auto;
+#ship{
+    position: absolute;
+    left: 10px;
+    top: 500px;
+
+
+
 }
