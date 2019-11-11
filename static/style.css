@@ -9,8 +9,10 @@ body{
 
 .main_container{
     margin: 20vh auto;
-    width: 60%;
+    width: 800px;
+    min-height: 600px;
     text-align: center;
+    background: url('bg.jpg') repeat-y 0 0;
 
 }
 .start_game_btn{
