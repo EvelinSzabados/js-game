@@ -79,10 +79,9 @@ function positionBullet(){
 }
 function main(){
     setInterval(moveBg, 10);
-    moveShip()
-
-    handleMeteor()
-    positionBullet()
+    //moveShip()
+    //handleMeteor()
+    //positionBullet()
 }
 
 main()
