@@ -45,14 +45,14 @@ body{
 }
 .game_container{
     margin: 4vh auto 0 auto;
-    width: 1400px;
+    width: 800px;
     text-align: center;
 }
 .game_container h2{
     background-color: rgb(70, 105, 170);
     padding: 20px;
     margin: 0px auto;
-    width: 1380px;
+    width: 780px;
     text-align: left;
     clear: left;
 
@@ -60,13 +60,14 @@ body{
 
 .game_field{
     margin: 20px auto;
-    width: 1400px;
-    height: 700px;
+    width: 800px;
+    height: 600px;
     text-align: center;
     background: url('bg.jpg') repeat 0 0;
     position: relative;
     border: 10px solid rgba(0,0,0,0.3);
     margin-inside: 10px;
+
   /*  border-left: 2px solid #2e003e;
     border-right: 2px solid #2e003e;*/
 
@@ -88,23 +89,24 @@ body{
 #ship{
     position: absolute;
     left: 10px;
-    top: 580px;
+    top: 480px;
 }
 #bullet{
     position: absolute;
     left: 53px;
-    top: 590px;
+    top: 510px;
     z-index: 0;
-    width: 35px;
+    width: 33px;
     display: block;
 }
 
 #meteor{
     position: absolute;
     left: 10px;
-    top: 0;
+    top: 150px;
     width: 100px;
     display: none;
+
 }
 
 #meteor2{
@@ -116,6 +118,29 @@ body{
 }
 
 #meteor3{
+    position: absolute;
+    left: 10px;
+    top: 0;
+    width: 100px;
+    display: none;
+}
+#meteor4{
+    position: absolute;
+    left: 10px;
+    top: 0;
+    width: 100px;
+    display: none;
+}
+
+#meteor5{
+    position: absolute;
+    left: 10px;
+    top: 0;
+    width: 100px;
+    display: none;
+}
+
+#meteor6{
     position: absolute;
     left: 10px;
     top: 0;
