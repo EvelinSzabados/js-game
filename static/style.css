@@ -1,35 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Shade');
 body{
     padding: 0;
     margin:0;
-    background-color: #404040;
+    background-image: url("main_bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
     font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
     color: white;
 
 }
 
+.header{
+    font-family: "Bungee Shade", cursive;
+    font-variant: small-caps;
+    text-align: center;
+    font-size: 75px;
+    letter-spacing: -1px;
+    word-spacing: -5px;
+    color: rgb(70, 105, 170);
+    background-color: rgba(84, 84, 84, 0);
+    text-shadow: rgba(83, 79, 89, 0) 2px 2px 2px;
+    margin: 0;
+
+}
+#back{
+    text-decoration: none;
+    color: lightgrey;
+    padding: 10px;
+}
+
+#back:hover{
+    color: white;
+    border-bottom: 2px solid rgb(70, 105, 170);
+}
 .main_container{
     margin: 20vh auto;
-    width: 800px;
+    width: 700px;
     text-align: center;
+    background-color: white;
+    color: #404040;
+    padding: 30px;
+    box-shadow: 0 0 20px white;
 }
 .game_container{
-    margin: 15vh auto;
-    width: 800px;
+    margin: 4vh auto 0 auto;
+    width: 1400px;
     text-align: center;
+}
+.game_container h2{
+    background-color: rgb(70, 105, 170);
+    padding: 20px;
+    margin: 0px auto;
+    width: 1380px;
+    text-align: left;
+    clear: left;
+
 }
 
 .game_field{
     margin: 20px auto;
-    width: 800px;
-    min-height: 600px;
+    width: 1400px;
+    height: 700px;
     text-align: center;
-    background: url('bg.jpg') repeat-y 0 0;
+    background: url('bg.jpg') repeat 0 0;
     position: relative;
+    border: 10px solid rgba(0,0,0,0.3);
+    margin-inside: 10px;
+  /*  border-left: 2px solid #2e003e;
+    border-right: 2px solid #2e003e;*/
+
 }
 .start_game_btn{
     border: none;
     text-decoration: none;
-    background-color: darkgoldenrod;
+    background-color: rgb(70, 105, 170);
     color: white;
     font-size: 16px;
     padding: 20px;
@@ -43,11 +88,10 @@ body{
 #ship{
     position: absolute;
     left: 10px;
-    top: 500px;
-
-
+    top: 600px;
 
 }
+<<<<<<< HEAD
 
 #meteor{
     position: absolute;
@@ -56,3 +100,8 @@ body{
 
 
 }
+=======
+#asteroid{
+    width: 120px
+}
+>>>>>>> master
