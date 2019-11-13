@@ -1,8 +1,8 @@
+let y = 0;
 function moveBg(){
-    let y = 0;
-        let board = document.querySelector('.game_field');
-        y++;
-        board.style.backgroundPositionY = y + 'px';
+    let board = document.querySelector('.game_field');
+    y++;
+    board.style.backgroundPositionY = y + 'px';
 }
 
 function moveShip(){
@@ -34,12 +34,13 @@ function handleMeteor(){
             let meteorY = 0;
             let meteor = document.getElementById('meteor');
             meteor.style.display = "block";
+            meteor.style.top = "0px";
             let randomPlace = Math.floor(Math.random() * 1000)
             meteor.style.left = `${randomPlace}px`
 
-            let MyVar = setInterval(moveMeteor, 15)
-
+            let MyVar = setInterval(moveMeteor, 13)
                 function moveMeteor(){
+
                 meteorY++;
                 meteor.style.top = 2 * meteorY + 'px';
                 if (meteorY >254){
@@ -48,6 +49,7 @@ function handleMeteor(){
                 }
             }
 }
+
 
 function positionBullet(){
 
@@ -79,9 +81,14 @@ function positionBullet(){
 }
 function main(){
     setInterval(moveBg, 10);
-    //moveShip()
-    //handleMeteor()
-    //positionBullet()
+    moveShip()
+    setInterval(handleMeteor, 4000)
+    setInterval(handleMeteor, 8000)
+    setInterval(handleMeteor, 12000)
+
+
+
+    positionBullet()
 }
 
 main()
