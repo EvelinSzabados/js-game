@@ -2,13 +2,8 @@ setInterval(moveBg, 10);
 let y = 0;
 let meteorY = 0;
 function moveBg(){
-<<<<<<< HEAD
-        let board = document.querySelector('.game_field');
-        y--;
-=======
         let board = document.querySelector('.game_field')
         y++;
->>>>>>> master
         board.style.backgroundPositionY = y + 'px';
 }
 
