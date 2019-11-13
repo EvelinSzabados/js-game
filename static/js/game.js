@@ -2,12 +2,12 @@ setInterval(moveBg, 10);
 let y = 0;
 let meteorY = 0;
 function moveBg(){
-        let board = document.querySelector('.game_field')
+        let board = document.querySelector('.game_field');
         y++;
         board.style.backgroundPositionY = y + 'px';
 }
 
-const ship = document.getElementById('ship')
+const ship = document.getElementById('ship');
 window.addEventListener("keydown", function (event) {
         let left = ship.style.left === '' ? 10 : parseInt(ship.style.left.replace('px', ''), 10)
         console.log(left)
@@ -27,15 +27,25 @@ window.addEventListener("keydown", function (event) {
                 ship.style.left = `${left+20}px`
         }
 
-})
+});
 
-let MyVar = setInterval(moveMeteor, 6)
+let MyVar = setInterval(moveMeteor, 10);
 function moveMeteor(){
-                const meteor = document.getElementById('meteor');
-                meteorY++;
-                if (meteorY >254){
-                        clearInterval(MyVar);
-                }
-                meteor.style.top = 2 * meteorY + 'px';
+                let meteorY = 0;
+            const meteor = document.getElementById('meteor');
+            meteor.style.display = "block";
+            let randomPlace = Math.floor(Math.random() * 1000);
+            meteor.style.left = `${randomPlace}px`;
 
+            let MyVar = setInterval(moveMeteor, 15);
+                function moveMeteor(){
+                meteorY++;
+                meteor.style.top = 2 * meteorY + 'px';
+                if (meteorY >254){
+                    clearInterval(MyVar);
+                    meteor.style.left = `${randomPlace}px;`;
+                    meteor.style.display = "none";
+                    meteor.style.top = "0px";
+                }
+            }
 }

@@ -90,15 +90,14 @@ body{
     left: 10px;
     top: 600px;
 
+
 }
 
 #meteor{
     position: absolute;
     top: 0;
-
-
-
-}
-#asteroid{
     width: 120px
+
+
+
 }
