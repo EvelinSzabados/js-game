@@ -43,10 +43,11 @@ function handleMeteor(){
 
                 meteorY++;
                 meteor.style.top = 2 * meteorY + 'px';
-                if (meteorY >254){
+                if (meteorY >296){
                     clearInterval(MyVar);
                     meteor.style.display = "none";
                 }
+
             }
 }
 
