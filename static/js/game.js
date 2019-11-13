@@ -13,11 +13,11 @@ function moveShip(){
         if (left > 10 && left < 1250  ){
             switch(event.code) {
                 case "ArrowLeft":
-                        ship.style.left = `${left-35}px`;
+                        ship.style.left = `${left-40}px`;
 
                         break;
                 case "ArrowRight":
-                        ship.style.left = `${left+35}px`;
+                        ship.style.left = `${left+40}px`;
                         break;
         }
         }else if (left >= 1250){
@@ -30,18 +30,23 @@ function moveShip(){
 }
 
 function handleMeteor(){
-    let meteorY = 0;
-    let MyVar = setInterval(moveMeteor, 6)
-        function moveMeteor(){
 
-        const meteor = document.getElementById('meteor');
-        meteorY++;
-        if (meteorY >254){
-            clearInterval(MyVar);
-        }
-        meteor.style.top = 2 * meteorY + 'px';
+            let meteorY = 0;
+            let meteor = document.getElementById('meteor');
+            meteor.style.display = "block";
+            let randomPlace = Math.floor(Math.random() * 1000)
+            meteor.style.left = `${randomPlace}px`
 
-        }
+            let MyVar = setInterval(moveMeteor, 15)
+
+                function moveMeteor(){
+                meteorY++;
+                meteor.style.top = 2 * meteorY + 'px';
+                if (meteorY >254){
+                    clearInterval(MyVar);
+                    meteor.style.display = "none";
+                }
+            }
 }
 
 function positionBullet(){
@@ -75,6 +80,7 @@ function positionBullet(){
 function main(){
     setInterval(moveBg, 10);
     moveShip()
+
     handleMeteor()
     positionBullet()
 }
