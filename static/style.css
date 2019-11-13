@@ -96,6 +96,7 @@ body{
     top: 590px;
     z-index: 0;
     width: 35px;
+    display: block;
 }
 
 #meteor{

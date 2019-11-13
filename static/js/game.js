@@ -44,23 +44,39 @@ function handleMeteor(){
         }
 }
 
-function handleBullet(){
-    const ship = document.getElementById('ship');
+function positionBullet(){
+
     const bullet = document.getElementById('bullet');
-    window.addEventListener("keydown", function (event) {
-        let top = bullet.style.left === '' ? 590 : parseInt(bullet.style.left.replace('px', ''), 10);
-        let shipLeft = ship.style.left === '' ? 10 : parseInt(ship.style.left.replace('px', ''), 10)
-        bullet.style.left = `${shipLeft+45}px`
-        if (event.code === "KeyX") {
-            bullet.style.top = `${top - 45}px`;
+    const ship = document.getElementById('ship');
+
+    window.addEventListener("keydown", function (event){
+
+        let left = ship.style.left === '' ? 10 : parseInt(ship.style.left.replace('px', ''), 10);
+        if(event.code === "ArrowLeft" || event.code === "ArrowRight"){
+            bullet.style.left = `${left+45}px`;
+        }else if (event.code ==="KeyX"){
+            let bulletY = 0;
+            const bulletTop = bullet.style.top === '' ? 590 : parseInt(bullet.style.top.replace('px', ''), 10);
+            const bulletLeft = bullet.style.left === '' ? 53 : parseInt(bullet.style.left.replace('px', ''), 10);
+            let shotBullet = setInterval(function(){
+                bullet.style.left = `${bulletLeft}px`;
+                bullet.style.top = `${bulletTop-bulletY}px`
+                bulletY+=5;
+                if(bulletY > 550){
+                    clearInterval(shotBullet)
+                    bullet.style.top = `590px`
+                }
+            }, 6)
         }
+
     })
+
 }
 function main(){
     setInterval(moveBg, 10);
     moveShip()
     handleMeteor()
-    handleBullet()
+    positionBullet()
 }
 
 main()
