@@ -1,5 +1,6 @@
 let y = 0;
 function moveBg(){
+
     let board = document.querySelector('.game_field');
     y++;
     board.style.backgroundPositionY = y + 'px';
@@ -32,23 +33,55 @@ function moveShip(){
 function handleMeteor(){
 
             let meteorY = 0;
+            let meteorY2 = 0;
+            let meteorY3 = 0;
             let meteor = document.getElementById('meteor');
+            let meteor2 = document.getElementById('meteor2');
+            let meteor3 = document.getElementById('meteor3');
             meteor.style.display = "block";
             meteor.style.top = "0px";
-            let randomPlace = Math.floor(Math.random() * 1000)
+            meteor2.style.display = "block";
+            meteor2.style.top = "0px";
+            meteor3.style.display = "block";
+            meteor3.style.top = "0px";
+            let randomPlace = Math.floor(Math.random() * 300)
             meteor.style.left = `${randomPlace}px`
+            let randomPlace2 = Math.floor(Math.random() * 600) +300
+            let randomPlace3 = Math.floor(Math.random() * 700) +400
+            if(randomPlace !== randomPlace2 && randomPlace2 !== randomPlace3){
+                meteor2.style.left = `${randomPlace2}px`
+                meteor3.style.left = `${randomPlace3}px`
+            }
 
-            let MyVar = setInterval(moveMeteor, 13)
+
+            let MyVar = setInterval(moveMeteor, 10)
                 function moveMeteor(){
 
                 meteorY++;
                 meteor.style.top = 2 * meteorY + 'px';
-                if (meteorY >296){
-                    clearInterval(MyVar);
+                if (meteorY > 296){
                     meteor.style.display = "none";
-                }
+                    clearInterval(MyVar);
+                    }
 
             }
+            let secondMeteor = setInterval(function(){
+                 meteorY2++;
+                 meteor2.style.top = 2 * meteorY2 + 'px';
+                 if (meteorY2 > 300){
+                     meteor2.style.display = "none";
+                    clearInterval(secondMeteor);
+                    }
+            }, 13)
+
+                let thirdMeteor = setInterval(function(){
+                 meteorY3++;
+                 meteor3.style.top = 2 * meteorY3 + 'px';
+                 if (meteorY3 > 300){
+                     meteor3.style.display = "none";
+                    clearInterval(thirdMeteor);
+                    }
+            }, 8)
 }
 
 
@@ -83,12 +116,10 @@ function positionBullet(){
 function main(){
     setInterval(moveBg, 10);
     moveShip()
+    handleMeteor()
     setInterval(handleMeteor, 4000)
     setInterval(handleMeteor, 8000)
     setInterval(handleMeteor, 12000)
-
-
-
     positionBullet()
 }
 

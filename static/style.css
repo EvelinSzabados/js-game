@@ -106,3 +106,19 @@ body{
     width: 100px;
     display: none;
 }
+
+#meteor2{
+    position: absolute;
+    left: 10px;
+    top: 0;
+    width: 100px;
+    display: none;
+}
+
+#meteor3{
+    position: absolute;
+    left: 10px;
+    top: 0;
+    width: 100px;
+    display: none;
+}
