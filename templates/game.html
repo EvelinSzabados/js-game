@@ -2,6 +2,7 @@
 
 {% block content %}
 <div class="game_container">
+<p><h2>Lives: 3 | Points: 0</h2></p>
     <div class="game_field">
         <div class="ship">
             <img src="/static/ship.png" id = "ship">
@@ -10,6 +11,7 @@
             <img src="/static/meteor.png" id = "meteor">
         </div>
     </div>
-    <a href="/"><button class="start_game_btn">Back to main page</button></a>
+
+    <a href="/" id="back">Back to main page</a>
 </div>
 {% endblock %}
