@@ -3,20 +3,14 @@
 {% block content %}
 <div class="game_container">
 <p><h2>Lives: 3 | Points: 0</h2></p>
-    <div class="game_field">
-        <div class="ship">
-            <img src="/static/bullet.png" id = "bullet">
-             <img src="/static/ship.png" id = "ship">
-        </div>
-            <!--<img src="/static/meteor2.png" id = "meteor">-->
-{#            <img src="/static/meteor2.png" id = "meteor2">#}
-{#            <img src="/static/meteor2.png" id = "meteor3">#}
+    <div class="game_field" id="game_field">
 
-
-
+        <img src="/static/bullet.png" id = "bullet">
+        <img src="/static/ship.png" id = "ship">
 
     </div>
 
     <a href="/" id="back">Back to main page</a>
 </div>
+    <script src="/static/js/game.js"></script>
 {% endblock %}

@@ -55,7 +55,6 @@ body{
     width: 780px;
     text-align: left;
     clear: left;
-
 }
 
 .game_field{
@@ -67,10 +66,7 @@ body{
     position: relative;
     border: 10px solid rgba(0,0,0,0.3);
     margin-inside: 10px;
-
-  /*  border-left: 2px solid #2e003e;
-    border-right: 2px solid #2e003e;*/
-
+    z-index: -1;
 }
 .start_game_btn{
     border: none;
@@ -103,47 +99,10 @@ body{
 #meteor{
     position: absolute;
     left: 10px;
-    top: 150px;
+    top: 0px;
     width: 100px;
     display: none;
 
+
 }
 
-#meteor2{
-    position: absolute;
-    left: 10px;
-    top: 0;
-    width: 100px;
-    display: none;
-}
-
-#meteor3{
-    position: absolute;
-    left: 10px;
-    top: 0;
-    width: 100px;
-    display: none;
-}
-#meteor4{
-    position: absolute;
-    left: 10px;
-    top: 0;
-    width: 100px;
-    display: none;
-}
-
-#meteor5{
-    position: absolute;
-    left: 10px;
-    top: 0;
-    width: 100px;
-    display: none;
-}
-
-#meteor6{
-    position: absolute;
-    left: 10px;
-    top: 0;
-    width: 100px;
-    display: none;
-}

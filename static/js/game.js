@@ -4,58 +4,61 @@ function moveBg(){
     y++;
     board.style.backgroundPositionY = y + 'px';
 }
+/* function valami(){
+     let meteor = document.createElement('IMG');
+     meteor.setAttribute('src', "/static/meteor2.png");
+     meteor.setAttribute('id', 'meteor');
+
+     let gameField = document.getElementById('game_field');
+     gameField.appendChild(meteor)
+ }*/
 
 function moveShip(){
-    const ship = document.getElementById('ship')
+    const ship = document.getElementById('ship');
     window.addEventListener("keydown", function (event) {
-        let left = ship.style.left === '' ? 10 : parseInt(ship.style.left.replace('px', ''), 10)
-        console.log(left)
+        let left = ship.style.left === '' ? 10 : parseInt(ship.style.left.replace('px', ''), 10);
+
         if (left > 10 && left < 640  ){
             switch(event.code) {
                 case "ArrowLeft":
                         ship.style.left = `${left-40}px`;
-
                         break;
                 case "ArrowRight":
                         ship.style.left = `${left+40}px`;
                         break;
         }
         }else if (left >= 640){
-                ship.style.left = `${left-20}px`
+                ship.style.left = `${left-20}px`;
         }else{
-                ship.style.left = `${left+20}px`
+                ship.style.left = `${left+20}px`;
         }
-
-})
+    })
 }
 
 function handleMeteor(){
 
-    let meteor = document.createElement('IMG');
-    meteor.setAttribute('src', "/static/meteor2.png");
-    meteor.setAttribute('id', 'meteor');
-    document.body.appendChild(meteor)
+        let gameField = document.getElementById('game_field')
+        let meteor = document.createElement('IMG');
+        meteor.setAttribute('src', "/static/meteor2.png");
+        meteor.setAttribute('id', 'meteor');
+        gameField.appendChild(meteor);
 
+        
     meteor.style.display = "block";
-    let meteorY = 150;
-    let meteorX = Math.floor(Math.random() * (1200 - 600)) + 600;
+    let meteorY = 0;
+    let meteorX = Math.floor(Math.random() * (700 - 1)) + 1;
     meteor.style.left = `${meteorX}px`;
 
 
     let meteorFallInterval = setInterval(function(){
         meteorY++;
         meteor.style.top = meteorY + 'px';
-        if (meteorY > 600){
+        if (meteorY > 490){
             meteor.style.display = "none";
+            meteor.remove();
             clearInterval(meteorFallInterval);
-
-
         }
-
-    }, 5)
-
-
-
+    }, 5);
 }
 
 function positionBullet(){
@@ -74,27 +77,25 @@ function positionBullet(){
             const bulletLeft = bullet.style.left === '' ? 53 : parseInt(bullet.style.left.replace('px', ''), 10);
             let shotBullet = setInterval(function(){
                 bullet.style.left = `${bulletLeft}px`;
-                bullet.style.top = `${bulletTop-bulletY}px`
+                bullet.style.top = `${bulletTop-bulletY}px`;
                 bulletY+=5;
                 if(bulletY > 500){
-                    clearInterval(shotBullet)
-                    bullet.style.top = `510px`
+                    clearInterval(shotBullet);
+                    bullet.style.top = `510px`;
                 }
-            }, 6)
+            }, 6);
         }
-
     })
-
 }
 function main(){
 
     setInterval(moveBg, 10);
     moveShip();
-    setInterval(handleMeteor, 1100)
-
-    positionBullet()
+    setInterval(handleMeteor, 1100);
+    //valami()
+    positionBullet();
 }
 
-main()
+main();
 
 
