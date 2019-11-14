@@ -61,13 +61,14 @@ function get_session_item(json_name){
 function checkLife(){
     let counterLife = get_session_item('lives');
     counterLife --;
+    displayCounters(counterLife)
     setTimeout(function(){
         if(counterLife !== 0) {
             set_session_json('lives', counterLife);
         }else{
             window.location.replace("/game_over")
         }
-             }, 1000)
+             }, 800)
 }
 function collisionDetectionShip(meteor) {
 
@@ -138,6 +139,11 @@ function positionBullet(){
     })
 }
 
+function displayCounters(counterLife){
+
+    let counterDisplay = document.getElementById('lives');
+    counterDisplay.innerText=`Lives: ${counterLife}`
+}
 function main(){
     set_session_json('lives', 3);
     setInterval(moveBg, 10);
