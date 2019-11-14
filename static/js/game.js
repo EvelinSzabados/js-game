@@ -41,7 +41,8 @@ function handleMeteor(){
     let meteorFallInterval = setInterval(function(){
         meteorY++;
         meteor.style.top = meteorY + 'px';
-        collisionDetection(meteor)
+        collisionDetectionShip(meteor);
+        collisionDetectionBullet(meteor);
         if (meteorY > 490){
 
             meteor.remove();
@@ -50,7 +51,7 @@ function handleMeteor(){
     }, 5);
 
 }
-function collisionDetection(meteor){
+function collisionDetectionShip(meteor){
 
     const ship = document.getElementById('ship')
     let meteorPlace = meteor.getBoundingClientRect();
@@ -64,6 +65,29 @@ function collisionDetection(meteor){
     console.log(offsetY, offsetX)
   if(offsetX <=120 && offsetX >= -120){
         if(offsetY <80 && offsetY > -80){
+            meteor.style.borderColor = "#fc037f";
+            setTimeout(function() {
+                meteor.remove();
+            }, 200);
+
+        }
+
+    }
+}
+function collisionDetectionBullet(meteor){
+
+    const bullet = document.getElementById('bullet');
+    let meteorPlace = meteor.getBoundingClientRect();
+    let bulletPlace = bullet.getBoundingClientRect();
+    let meteorX = meteorPlace.x;
+    let meteorY = meteorPlace.y;
+    let bulletX = bulletPlace.x;
+    let bulletY = bulletPlace.y;
+    let offsetX = meteorX - bulletX;
+    let offsetY = meteorY - bulletY;
+    console.log(offsetY, offsetX);
+  if(offsetX <=58 && offsetX >= -99){
+        if(offsetY <50 && offsetY > -50){
             meteor.style.borderColor = "#fc037f";
             setTimeout(function() {
                 meteor.remove();
