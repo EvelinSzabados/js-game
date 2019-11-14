@@ -2,7 +2,7 @@ let y = 0;
 function moveBg(){
     let board = document.querySelector('.game_field');
     y++;
-    board.style.backgroundPositionY = y + 'px';
+    board.style.backgroundPositionY = y+1 + 'px';
 }
 
 function moveShip(){
@@ -50,13 +50,28 @@ function handleMeteor(){
     }, 5);
 
 }
-function collisionDetection(){
-    const meteor = document.getElementById('meteor');
+function collisionDetection(meteor){
+
     const ship = document.getElementById('ship')
     let meteorPlace = meteor.getBoundingClientRect();
     let shipPlace = ship.getBoundingClientRect();
-    let offset= meteorPlace.left - shipPlace.left;
-    console.log(offset)
+    let meteorX = meteorPlace.x;
+    let meteorY = meteorPlace.y;
+    let shipX = shipPlace.x;
+    let shipY = shipPlace.y;
+    let offsetX = meteorX - shipX;
+    let offsetY = meteorY - shipY;
+    console.log(offsetY, offsetX)
+  if(offsetX <=120 && offsetX >= -120){
+        if(offsetY <80 && offsetY > -80){
+            meteor.style.borderColor = "#fc037f";
+            setTimeout(function() {
+                meteor.remove();
+            }, 200);
+
+        }
+
+    }
 }
 function positionBullet(){
 
@@ -70,7 +85,7 @@ function positionBullet(){
             bullet.style.left = `${left+45}px`;
         }else if (event.code ==="KeyX"){
             let bulletY = 0;
-            const bulletTop = bullet.style.top === '' ? 510 : parseInt(bullet.style.top.replace('px', ''), 10);
+            const bulletTop = bullet.style.top === '' ? 480 : parseInt(bullet.style.top.replace('px', ''), 10);
             const bulletLeft = bullet.style.left === '' ? 53 : parseInt(bullet.style.left.replace('px', ''), 10);
             let shotBullet = setInterval(function(){
                 bullet.style.left = `${bulletLeft}px`;
@@ -78,7 +93,7 @@ function positionBullet(){
                 bulletY+=5;
                 if(bulletY > 500){
                     clearInterval(shotBullet);
-                    bullet.style.top = `510px`;
+                    bullet.style.top = `480px`;
                 }
             }, 6);
         }

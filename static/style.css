@@ -85,17 +85,18 @@ body{
 #ship{
     position: absolute;
     left: 10px;
-    top: 480px;
+    top: 440px;
     border: 1px solid transparent;
 }
 #bullet{
     position: absolute;
     left: 53px;
-    top: 510px;
+    top: 480px;
     z-index: 0;
     width: 33px;
     display: block;
-    border: 1px solid transparent;
+    border: 3px solid transparent;
+    border-radius: 50px;
 }
 
 #meteor{
