@@ -9,7 +9,6 @@ function moveShip(){
     const ship = document.getElementById('ship');
     window.addEventListener("keydown", function (event) {
         let left = ship.style.left === '' ? 10 : parseInt(ship.style.left.replace('px', ''), 10);
-
         if (left > 10 && left < 640  ){
             switch(event.code) {
                 case "ArrowLeft":
@@ -28,7 +27,7 @@ function moveShip(){
 }
 
 function handleMeteor(){
-    let gameField = document.getElementById('game_field')
+    let gameField = document.getElementById('game_field');
     let meteor = document.createElement('IMG');
     meteor.setAttribute('src', "/static/meteor2.png");
     meteor.setAttribute('id', 'meteor');
@@ -97,8 +96,8 @@ function collisionDetectionShip(meteor) {
         let offsetX = meteorPos.x - shipPos.x;
         let offsetY = meteorPos.y - shipPos.y;
 
-        if (offsetX <= 120 && offsetX >= -120) {
-            if (offsetY < 80 && offsetY > -80) {
+        if (offsetX <= 100 && offsetX >= -100) {
+            if (offsetY < 60 && offsetY > -60) {
                 meteor.style.backgroundColor = "#fc037f";
                 setTimeout(function () {
                     checkLife();
@@ -119,7 +118,7 @@ function collisionDetectionBullet(meteor){
     let offsetX =  meteorPlace.x - bulletPlace.x;
     let offsetY = meteorPlace.y - bulletPlace.y;
 
-    if(offsetX <=58 && offsetX >= -99){
+    if(offsetX <=45 && offsetX >= -95){
         if(offsetY <50 && offsetY > -50){
             meteor.style.backgroundColor = "yellow";
             checkPoints();
