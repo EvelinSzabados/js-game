@@ -50,49 +50,64 @@ function handleMeteor(){
     }, 5);
 
 }
+function set_session_json(json_name, item){
+    return localStorage.setItem(json_name, JSON.stringify(item));
+}
 
+function get_session_item(json_name){
+    return JSON.parse((localStorage.getItem(json_name)));
+}
+
+function checkLife(){
+    let counterLife = get_session_item('lives');
+    counterLife --;
+    setTimeout(function(){
+        if(counterLife !== 0) {
+            set_session_json('lives', counterLife);
+        }else{
+            window.location.replace("/game_over")
+        }
+             }, 1000)
+}
 function collisionDetectionShip(meteor) {
 
-    const ship = document.getElementById('ship');
-    let meteorPos = meteor.getBoundingClientRect();
-    let shipPos = ship.getBoundingClientRect();
+        const ship = document.getElementById('ship');
+        let meteorPos = meteor.getBoundingClientRect();
+        let shipPos = ship.getBoundingClientRect();
 
-    let offsetX = meteorPos.x - shipPos.x;
-    let offsetY = meteorPos.y - shipPos.y;
+        let offsetX = meteorPos.x - shipPos.x;
+        let offsetY = meteorPos.y - shipPos.y;
 
-
-    if (offsetX <= 120 && offsetX >= -120) {
-        if (offsetY < 80 && offsetY > -80) {
-            meteor.style.backgroundColor = "#fc037f";
+        if (offsetX <= 120 && offsetX >= -120) {
+            if (offsetY < 80 && offsetY > -80) {
+                meteor.style.backgroundColor = "#fc037f";
                 setTimeout(function () {
+                    checkLife();
                     meteor.remove();
-                }, 200);
-
+                    }, 200);
+                return true;
+                }
+            }
+       return false;
         }
 
-        }
-
-}
 function collisionDetectionBullet(meteor){
 
     const bullet = document.getElementById('bullet');
-
     let meteorPlace = meteor.getBoundingClientRect();
     let bulletPlace = bullet.getBoundingClientRect();
 
     let offsetX =  meteorPlace.x - bulletPlace.x;
     let offsetY = meteorPlace.y - bulletPlace.y;
-    console.log(offsetY, offsetX);
-  if(offsetX <=58 && offsetX >= -99){
-        if(offsetY <50 && offsetY > -50){
 
-            meteor.style.backgroundColor = "#fc037f";
+    if(offsetX <=58 && offsetX >= -99){
+        if(offsetY <50 && offsetY > -50){
+            meteor.style.backgroundColor = "yellow";
             setTimeout(function() {
                 meteor.remove();
             }, 200);
         }
     }
-
 }
 
 function positionBullet(){
@@ -124,7 +139,7 @@ function positionBullet(){
 }
 
 function main(){
-
+    set_session_json('lives', 3);
     setInterval(moveBg, 10);
     moveShip();
     setInterval(handleMeteor, 1100);
