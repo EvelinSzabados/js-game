@@ -41,7 +41,8 @@ function handleMeteor(){
     let meteorFallInterval = setInterval(function(){
         meteorY++;
         meteor.style.top = meteorY + 'px';
-        collisionDetection(meteor)
+        collisionDetectionShip(meteor);
+        collisionDetectionBullet(meteor);
         if (meteorY > 490){
 
             meteor.remove();
@@ -68,9 +69,10 @@ function collisionDetection(meteor) {
                     meteor.remove();
                 }, 200);
 
+        }
 
         }
-    }
+
 }
 function positionBullet(){
 
