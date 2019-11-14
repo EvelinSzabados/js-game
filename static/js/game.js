@@ -44,7 +44,6 @@ function handleMeteor(){
         collisionDetectionShip(meteor);
         collisionDetectionBullet(meteor);
         if (meteorY > 490){
-
             meteor.remove();
             clearInterval(meteorFallInterval);
         }
@@ -52,7 +51,7 @@ function handleMeteor(){
 
 }
 
-function collisionDetection(meteor) {
+function collisionDetectionShip(meteor) {
 
     const ship = document.getElementById('ship');
     let meteorPos = meteor.getBoundingClientRect();
@@ -74,10 +73,33 @@ function collisionDetection(meteor) {
         }
 
 }
+function collisionDetectionBullet(meteor){
+
+    const bullet = document.getElementById('bullet');
+
+    let meteorPlace = meteor.getBoundingClientRect();
+    let bulletPlace = bullet.getBoundingClientRect();
+
+    let offsetX =  meteorPlace.x - bulletPlace.x;
+    let offsetY = meteorPlace.y - bulletPlace.y;
+    console.log(offsetY, offsetX);
+  if(offsetX <=58 && offsetX >= -99){
+        if(offsetY <50 && offsetY > -50){
+
+            meteor.style.backgroundColor = "#fc037f";
+            setTimeout(function() {
+                meteor.remove();
+            }, 200);
+        }
+    }
+
+}
+
 function positionBullet(){
 
     const bullet = document.getElementById('bullet');
     const ship = document.getElementById('ship');
+    bullet.style.display = 'block';
 
     window.addEventListener("keydown", function (event){
 
