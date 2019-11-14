@@ -86,6 +86,7 @@ body{
     position: absolute;
     left: 10px;
     top: 480px;
+    border: 1px solid transparent;
 }
 #bullet{
     position: absolute;
@@ -94,6 +95,7 @@ body{
     z-index: 0;
     width: 33px;
     display: block;
+    border: 1px solid transparent;
 }
 
 #meteor{
@@ -101,7 +103,8 @@ body{
     left: 10px;
     top: 0px;
     width: 100px;
-    display: none;
+    display: block;
+    border: 1px solid transparent;
 
 
 }

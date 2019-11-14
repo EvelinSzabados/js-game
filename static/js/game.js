@@ -4,14 +4,6 @@ function moveBg(){
     y++;
     board.style.backgroundPositionY = y + 'px';
 }
-/* function valami(){
-     let meteor = document.createElement('IMG');
-     meteor.setAttribute('src', "/static/meteor2.png");
-     meteor.setAttribute('id', 'meteor');
-
-     let gameField = document.getElementById('game_field');
-     gameField.appendChild(meteor)
- }*/
 
 function moveShip(){
     const ship = document.getElementById('ship');
@@ -36,31 +28,36 @@ function moveShip(){
 }
 
 function handleMeteor(){
+    let gameField = document.getElementById('game_field')
+    let meteor = document.createElement('IMG');
+    meteor.setAttribute('src', "/static/meteor2.png");
+    meteor.setAttribute('id', 'meteor');
+    gameField.appendChild(meteor);
 
-        let gameField = document.getElementById('game_field')
-        let meteor = document.createElement('IMG');
-        meteor.setAttribute('src', "/static/meteor2.png");
-        meteor.setAttribute('id', 'meteor');
-        gameField.appendChild(meteor);
-
-        
-    meteor.style.display = "block";
     let meteorY = 0;
     let meteorX = Math.floor(Math.random() * (700 - 1)) + 1;
     meteor.style.left = `${meteorX}px`;
 
-
     let meteorFallInterval = setInterval(function(){
         meteorY++;
         meteor.style.top = meteorY + 'px';
+        collisionDetection(meteor)
         if (meteorY > 490){
-            meteor.style.display = "none";
+
             meteor.remove();
             clearInterval(meteorFallInterval);
         }
     }, 5);
-}
 
+}
+function collisionDetection(){
+    const meteor = document.getElementById('meteor');
+    const ship = document.getElementById('ship')
+    let meteorPlace = meteor.getBoundingClientRect();
+    let shipPlace = ship.getBoundingClientRect();
+    let offset= meteorPlace.left - shipPlace.left;
+    console.log(offset)
+}
 function positionBullet(){
 
     const bullet = document.getElementById('bullet');
@@ -87,12 +84,12 @@ function positionBullet(){
         }
     })
 }
+
 function main(){
 
     setInterval(moveBg, 10);
     moveShip();
     setInterval(handleMeteor, 1100);
-    //valami()
     positionBullet();
 }
 
