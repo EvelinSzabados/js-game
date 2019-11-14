@@ -50,27 +50,26 @@ function handleMeteor(){
     }, 5);
 
 }
-function collisionDetection(meteor){
 
-    const ship = document.getElementById('ship')
-    let meteorPlace = meteor.getBoundingClientRect();
-    let shipPlace = ship.getBoundingClientRect();
-    let meteorX = meteorPlace.x;
-    let meteorY = meteorPlace.y;
-    let shipX = shipPlace.x;
-    let shipY = shipPlace.y;
-    let offsetX = meteorX - shipX;
-    let offsetY = meteorY - shipY;
-    console.log(offsetY, offsetX)
-  if(offsetX <=120 && offsetX >= -120){
-        if(offsetY <80 && offsetY > -80){
-            meteor.style.borderColor = "#fc037f";
-            setTimeout(function() {
-                meteor.remove();
-            }, 200);
+function collisionDetection(meteor) {
+
+    const ship = document.getElementById('ship');
+    let meteorPos = meteor.getBoundingClientRect();
+    let shipPos = ship.getBoundingClientRect();
+
+    let offsetX = meteorPos.x - shipPos.x;
+    let offsetY = meteorPos.y - shipPos.y;
+
+
+    if (offsetX <= 120 && offsetX >= -120) {
+        if (offsetY < 80 && offsetY > -80) {
+            meteor.style.backgroundColor = "#fc037f";
+                setTimeout(function () {
+                    meteor.remove();
+                }, 200);
+
 
         }
-
     }
 }
 function positionBullet(){
@@ -109,5 +108,6 @@ function main(){
 }
 
 main();
+
 
 

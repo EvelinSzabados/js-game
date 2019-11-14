@@ -96,7 +96,7 @@ body{
     width: 33px;
     display: block;
     border: 3px solid transparent;
-    border-radius: 50px;
+
 }
 
 #meteor{
@@ -106,6 +106,7 @@ body{
     width: 100px;
     display: block;
     border: 1px solid transparent;
+    border-radius: 50px;
 
 
 }
