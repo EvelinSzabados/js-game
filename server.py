@@ -17,6 +17,9 @@ def game():
 def game_over():
     return render_template('game_over.html')
 
+@app.route('/next_level')
+def winner():
+    return render_template('winner.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

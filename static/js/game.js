@@ -50,23 +50,41 @@ function handleMeteor(){
     }, 5);
 
 }
-function set_session_json(json_name, item){
+function set_session_life(json_name, item){
     return localStorage.setItem(json_name, JSON.stringify(item));
 }
 
-function get_session_item(json_name){
+function get_session_life(json_name){
     return JSON.parse((localStorage.getItem(json_name)));
 }
-
+function set_session_points(json_name, point){
+    return localStorage.setItem(json_name, JSON.stringify(point));
+}
+function get_session_points(json_name){
+    return JSON.parse((localStorage.getItem(json_name)));
+}
 function checkLife(){
-    let counterLife = get_session_item('lives');
+    let counterLife = get_session_life('lives');
     counterLife --;
-    displayCounters(counterLife)
+    displayLife(counterLife);
     setTimeout(function(){
         if(counterLife !== 0) {
-            set_session_json('lives', counterLife);
+            set_session_life('lives', counterLife);
         }else{
             window.location.replace("/game_over")
+        }
+             }, 800)
+}
+function checkPoints(){
+    let points = get_session_points('points');
+    points++;
+
+    console.log(points)
+    displayPoints(points)
+    setTimeout(function(){
+        set_session_life('points', points);
+        if(points > 9) {
+            window.location.replace("/next_level")
         }
              }, 800)
 }
@@ -104,11 +122,15 @@ function collisionDetectionBullet(meteor){
     if(offsetX <=58 && offsetX >= -99){
         if(offsetY <50 && offsetY > -50){
             meteor.style.backgroundColor = "yellow";
+            checkPoints();
             setTimeout(function() {
+
                 meteor.remove();
             }, 200);
+            return true;
         }
     }
+    return false;
 }
 
 function positionBullet(){
@@ -139,13 +161,19 @@ function positionBullet(){
     })
 }
 
-function displayCounters(counterLife){
+function displayLife(counterLife){
 
     let counterDisplay = document.getElementById('lives');
-    counterDisplay.innerText=`Lives: ${counterLife}`
+    counterDisplay.innerText=`Lives: ${counterLife}`;
+}
+
+function displayPoints(points){
+    let pointDisplay = document.getElementById('points');
+    pointDisplay.innerText = `Points: ${points}`;
 }
 function main(){
-    set_session_json('lives', 3);
+    set_session_life('lives', 3);
+    set_session_points('points', 0);
     setInterval(moveBg, 10);
     moveShip();
     setInterval(handleMeteor, 1100);
